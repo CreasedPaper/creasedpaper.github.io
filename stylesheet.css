@@ -1,0 +1,13 @@
+
+.row {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+.column {
+    flex: 50%;
+
+  }  
+  .space {
+    flex: 50%;
+}

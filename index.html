@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Ascii Clicker</title>
+</head>
+<body>
+    <h2> ASCII Clicker</h2>
+    <div class="row">
+        <div class="col">
+            <h3 id="emotesAdded">0 emotes</h3>
+            <button onclick="emote()" id="face">:)</button>
+            <p id="emotesPerClick">emotes per click: 1</p>
+            <p id="emotesPerSecond">emotes per second: 0</p>
+        </div>
+        <div id="space">
+            <p> &emsp;&emsp;&emsp;</p>
+        </div>
+        <div class="col">
+            <h3>upgrades</h3>
+            <div>
+            <p> Double Click Value: </p><button onclick="doubleUpgrade()"id="doubleUpgrade">Cost 100 Emotes</button>
+            </div>
+        </div>
+        <div id="space">
+            <p> &emsp;&emsp;&emsp;</p>
+        </div>
+        <div class="col">
+            <h3>auto emotes</h3>
+            <div>
+            <pre>
+  /\ ___ /\
+ (  o   o  )
+  \  >#<  /
+  /       \
+ /         \       ^
+|           |     //
+ \         /    //
+  ///  ///   -- </pre>
+            <button onclick="catBuy()"id="cat">Cost: 100 Emotes</button>
+            <p id="catsOwned">owned: 0</p>
+            </div>
+            <div>
+                <pre>
+  __
+<(o )___
+ ( ._> /
+  `---'</pre>
+                <button onclick="duckBuy()"id="duck">Cost: 500 Emotes</button>
+                <p id="ducksOwned">owned: 0</p>
+                </div>
+        </div>
+    </div>
+    <script src="main.js" charset="utf-8" type="text/javascript"></script>
+
+</body>
+
+</html>
