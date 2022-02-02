@@ -4,12 +4,16 @@ var gameData = {
     faces: [":)",";)", ":D", ";D", ":P", ";P", "XD", "x)", "owo", "OwO", "oWo"],
     faceIndex: 0,
     autoEmote: 0,
-    version: 2,
+    version: 3,
     doubleUpgradeCost: 100,
     gens: ["cat", "duck"],
     genCount: [0,0],
-    genUpgradeCost: [100, 500]
+    genUpgradeCost: [100, 500],
+    unlockCount: 0,
+    unlockList:["upgrades", "auto"]
   }
+var startData = gameData
+
 function emote() {
     gameData.emotes += gameData.emotesPerClick
     document.getElementById("emotesAdded").innerHTML = gameData.emotes + " Emotes Emoted"
@@ -17,10 +21,10 @@ function emote() {
 function doubleUpgrade() {
     if (gameData.emotes >= gameData.doubleUpgradeCost){
         gameData.emotes -= gameData.doubleUpgradeCost
-        gameData.doubleUpgradeCost += gameData.doubleUpgradeCost
+        gameData.doubleUpgradeCost = Math.round(gameData.doubleUpgradeCost * 1.07)
         document.getElementById("doubleUpgrade").innerHTML = "Cost: " + gameData.doubleUpgradeCost + " emotes"
         document.getElementById("emotesAdded").innerHTML = gameData.emotes + " Emotes Emoted"
-        gameData.emotesPerClick = gameData.emotesPerClick * 2
+        gameData.emotesPerClick = gameData.emotesPerClick + 1
         gameData.faceIndex += 1
         document.getElementById("face").innerHTML = gameData.faces[gameData.faceIndex]
         document.getElementById("emotesPerClick").innerHTML = "emotes per click: " + gameData.emotesPerClick
@@ -32,7 +36,7 @@ function catBuy() {
       gameData.autoEmote = gameData.autoEmote + 1
       gameData.genCount[0] += 1
       document.getElementById("catsOwned").innerHTML = "purchased: " + gameData.genCount[0]
-      gameData.genUpgradeCost[0] = gameData.genUpgradeCost[0] * 2
+      gameData.genUpgradeCost[0] = Math.round(gameData.genUpgradeCost[0] * 1.11)
       document.getElementById("cat").innerHTML = "Cost " + gameData.genUpgradeCost[0] + " emotes"
       document.getElementById("emotesPerSecond").innerHTML = "emotes per second: " + gameData.autoEmote
   }
@@ -46,7 +50,7 @@ function duckBuy() {
       gameData.autoEmote = gameData.autoEmote + 5
       gameData.genCount[1] += 1
       document.getElementById("ducksOwned").innerHTML = "purchased: " + gameData.genCount[1]
-      gameData.genUpgradeCost[1] = gameData.genUpgradeCost[1] * 2
+      gameData.genUpgradeCost[1] = Math.round(gameData.genUpgradeCost[1] * 1.26)
       document.getElementById("duck").innerHTML = "Cost " + gameData.genUpgradeCost[1] + " emotes"
       document.getElementById("emotesPerSecond").innerHTML = "emotes per second: " + gameData.autoEmote
   }
@@ -82,8 +86,10 @@ var savegame = JSON.parse(localStorage.getItem("asciiClickerSave"))
         console.log("in else")
         gameData = savegame
     }
-    gameData = savegame
+    //gameData = savegame
+    hide()
     loadElements()
+    unlockUpTo(gameData.unlockCount)
   }
 function loadElements(){
   document.getElementById("emotesPerClick").innerHTML = "Emotes Per Click: " + gameData.emotesPerClick
@@ -100,4 +106,50 @@ function loadElements(){
   console.log("load complete")
 
 
+}
+function endIt(){
+  console.log("ending it")
+  gameData = startData
+  savegame = null
+  hide()
+  loadElements()
+}
+
+var unlockLoop = window.setInterval(function() {
+  console.log("checking unlocks")
+  if(gameData.emotes >= 50){
+    document.getElementById("upgrades").style.display = "block";
+    console.log("unlocked upgrades")
+    if(gameData.unlockCount < 1){
+      gameData.unlockCount = gameData.unlockCount + 1
+    }
+  }
+  if(gameData.emotes >= 250){
+    document.getElementById("space2").style.display = "block";
+    document.getElementById("auto").style.display = "block";
+    if(gameData.unlockCount < 2){
+      gameData.unlockCount = gameData.unlockCount + 1
+    }
+  }
+}, 1000)
+
+function hide(){
+  document.getElementById("upgrades").style.display = "none";
+  document.getElementById("auto").style.display = "none";
+  document.getElementById("space2").style.display = "none";
+}
+function hide2(){
+  document.getElementById("upgrades").style.display = "none";
+  document.getElementById("auto").style.display = "none";
+  document.getElementById("space2").style.display = "none";
+  unlockUpTo(gameData.unlockCount)
+}
+function unlockUpTo(unlocks){
+  for(let i = 0; i < unlocks; i++){
+    document.getElementById(gameData.unlockList[i]).style.display = "block";
+  }
+  if(unlocks >= 1){
+    document.getElementById("space2").style.display = "block";
+  }
+}
 }
