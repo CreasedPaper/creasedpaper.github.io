@@ -7,29 +7,43 @@
     <link rel="stylesheet" href="stylesheet.css">
     <title>Ascii Clicker</title>
 </head>
-<body>
+<body onload="hide2()">
     <h2> ASCII Clicker</h2>
     <div class="row">
-        <div class="col">
-            <h3 id="emotesAdded">0 emotes</h3>
+        <div id="main">
+            <h3 id="emotesAdded">0 Emotes Emoted</h3>
+            <p>=====================</p>
             <button onclick="emote()" id="face">:)</button>
             <p id="emotesPerClick">emotes per click: 1</p>
             <p id="emotesPerSecond">emotes per second: 0</p>
+            <br>
+            <br>
+            <br>
+            <p>end it all?</p>
+            <button onclick="endIt()"> end it </button>
         </div>
         <div id="space">
-            <p> &emsp;&emsp;&emsp;</p>
+            <p> &emsp;&emsp;</p>
+            <p>
+                &emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|
+            </p>
         </div>
-        <div class="col">
+        <div id="upgrades">
             <h3>upgrades</h3>
+            <p>=====================</p>
             <div>
             <p> Double Click Value: </p><button onclick="doubleUpgrade()"id="doubleUpgrade">Cost 100 Emotes</button>
             </div>
         </div>
-        <div id="space">
-            <p> &emsp;&emsp;&emsp;</p>
+        <div id="space2">
+            <p> &emsp;&emsp;</p>
+            <p>
+                &emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|<br>&emsp;|
+            </p>
         </div>
-        <div class="col">
+        <div id="auto">
             <h3>auto emotes</h3>
+            <p>=====================</p>
             <div>
             <pre>
   /\ ___ /\
