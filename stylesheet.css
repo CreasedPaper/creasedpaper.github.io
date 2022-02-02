@@ -7,7 +7,16 @@
 .column {
     flex: 50%;
 
-  }  
-  .space {
+  } 
+.space {
     flex: 50%;
+}
+.upgrades{
+  display: none;
+}
+.auto{
+  display: none;
+}
+.space2 {
+  display: none;
 }
