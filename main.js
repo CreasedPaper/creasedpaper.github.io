@@ -110,6 +110,7 @@ console.log("load complete")
 function endIt(){
 console.log("ending it")
 gameData = startData
+gameData.emotes = 0;
 savegame = null
 hide()
 loadElements()
